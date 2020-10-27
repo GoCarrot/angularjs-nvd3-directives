@@ -1,6 +1,6 @@
-/*! angularjs-nvd3-directives - v0.0.8 - 2015-02-04
+/*! angularjs-nvd3-directives - v0.0.8 - 2020-10-27
  * http://angularjs-nvd3-directives.github.io/angularjs-nvd3-directives
- * Copyright (c) 2015 Christian Maurer; Licensed Apache License, v2.0 */
+ * Copyright (c) 2020 Christian Maurer; Licensed Apache License, v2.0 */
 ( function () {
   'use strict';
 
@@ -2646,6 +2646,10 @@
           alignvalue: '@',
           rightalignvalue: '@',
           nodata: '@',
+          status: '&',
+          showFirstPoint: '@',
+          showStatusChange: '@',
+          interactive: '@',
           callback: '&',
           xtickformat: '&',
           ytickformat: '&',
@@ -2682,7 +2686,9 @@
                     return d.x;
                   } : scope.x() ).y( attrs.y === undefined ? function ( d ) {
                     return d.y;
-                  } : scope.y() ).xTickFormat( attrs.xtickformat === undefined ? d3.format( ',r' ) : scope.xtickformat() ).yTickFormat( attrs.ytickformat === undefined ? d3.format( ',.2f' ) : scope.ytickformat() ).color( attrs.color === undefined ? nv.utils.getColor( [ '#000' ] ) : scope.color() ).showValue( attrs.showvalue === undefined ? true : attrs.showvalue === 'true' ).alignValue( attrs.alignvalue === undefined ? true : attrs.alignvalue === 'true' ).rightAlignValue( attrs.rightalignvalue === undefined ? false : attrs.rightalignvalue === 'true' ).noData( attrs.nodata === undefined ? 'No Data Available.' : scope.nodata );
+                  } : scope.y() ).status( attrs.status === undefined ? function ( d ) {
+                    return d.status;
+                  } : scope.status() ).xTickFormat( attrs.xtickformat === undefined ? d3.format( ',r' ) : scope.xtickformat() ).yTickFormat( attrs.ytickformat === undefined ? d3.format( ',.2f' ) : scope.ytickformat() ).color( attrs.color === undefined ? nv.utils.getColor( [ '#000' ] ) : scope.color() ).showLastValue( attrs.showvalue === undefined ? true : attrs.showvalue === 'true' ).alignValue( attrs.alignvalue === undefined ? true : attrs.alignvalue === 'true' ).rightAlignValue( attrs.rightalignvalue === undefined ? false : attrs.rightalignvalue === 'true' ).noData( attrs.nodata === undefined ? 'No Data Available.' : scope.nodata ).interactive( attrs.interactive === undefined ? false : attrs.interactive === 'true' ).showFirstPoint( attrs.showFirstPoint === undefined ? false : attrs.showFirstPoint === 'true' ).showStatusChange( attrs.showStatusChange === undefined ? false : attrs.showStatusChange === 'true' );
                   if ( attrs.xScale ) {
                     chart.xScale( scope.xScale() );
                   }
