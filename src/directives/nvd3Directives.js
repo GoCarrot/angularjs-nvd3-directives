@@ -2112,6 +2112,10 @@
                     alignvalue: '@',
                     rightalignvalue: '@',
                     nodata: '@',
+                    status: '&',
+                    showFirstPoint: '@',
+                    showStatusChange: '@',
+                    interactive: '@',
 
                     callback: '&',
 
@@ -2151,13 +2155,17 @@
                                         .margin(scope.margin)
                                         .x(attrs.x === undefined ? function(d){ return d.x; } : scope.x())
                                         .y(attrs.y === undefined ? function(d){ return d.y; } : scope.y())
+                                        .status(attrs.status === undefined ? function(d) { return d.status; } : scope.status())
                                         .xTickFormat(attrs.xtickformat === undefined ? d3.format(',r') : scope.xtickformat())
                                         .yTickFormat(attrs.ytickformat === undefined ? d3.format(',.2f') : scope.ytickformat())
                                         .color(attrs.color === undefined ? nv.utils.getColor(['#000']) : scope.color())
                                         .showLastValue(attrs.showvalue === undefined ? true : (attrs.showvalue === 'true'))
                                         .alignValue(attrs.alignvalue === undefined ? true : (attrs.alignvalue === 'true'))
                                         .rightAlignValue(attrs.rightalignvalue === undefined ? false : (attrs.rightalignvalue === 'true'))
-                                        .noData(attrs.nodata === undefined ? 'No Data Available.' : scope.nodata);
+                                        .noData(attrs.nodata === undefined ? 'No Data Available.' : scope.nodata)
+                                        .interactive(attrs.interactive === undefined ? false : (attrs.interactive === 'true'))
+                                        .showFirstPoint(attrs.showFirstPoint === undefined ? false : (attrs.showFirstPoint === 'true'))
+                                        .showStatusChange(attrs.showStatusChange === undefined ? false : (attrs.showStatusChange === 'true'))
 
                                     if(attrs.xScale){
                                         chart.xScale(scope.xScale());
@@ -2295,7 +2303,7 @@
                         if (data && angular.isDefined(scope.filtername) && angular.isDefined(scope.filtervalue)) {
                             data =  $filter(scope.filtername)(data, scope.filtervalue);
                         }
-                        
+
                         if(data){
                             //if the chart exists on the scope, do not call addGraph again, update data and call the chart.
                             if(scope.chart){
