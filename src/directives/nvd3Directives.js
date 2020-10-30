@@ -1901,7 +1901,7 @@
                     width: '@',
                     height: '@',
                     id: '@',
-                    margin: '&',
+                    margin: '@',
                     x: '&',
                     y: '&',
                     color: '&',
