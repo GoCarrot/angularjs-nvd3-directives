@@ -1948,7 +1948,7 @@
                                         .xTickFormat(attrs.xtickformat === undefined ? d3.format(',r') : scope.xtickformat())
                                         .yTickFormat(attrs.ytickformat === undefined ? d3.format(',.2f') : scope.ytickformat())
                                         .color(attrs.color === undefined ? nv.utils.getColor(['#000']) : scope.color())
-                                        .showValue(attrs.showvalue === undefined ? true : (attrs.showvalue === 'true'))
+                                        .showLastValue(attrs.showvalue === undefined ? true : (attrs.showvalue === 'true'))
                                         .alignValue(attrs.alignvalue === undefined ? true : (attrs.alignvalue === 'true'))
                                         .rightAlignValue(attrs.rightalignvalue === undefined ? false : (attrs.rightalignvalue === 'true'))
                                         .noData(attrs.nodata === undefined ? 'No Data Available.' : scope.nodata);
